@@ -35,3 +35,26 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
+
+- script: 'pip install flake8 && flake8'
+  displayName: Flake8
+
+- script: 'pip install pytest && pytest tests --doctest-modules --junitxml=junit/test-results.xml'
+  displayName: pytest
+  
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/test-results.xml'
+  inputs:
+    testResultsFiles: '**/test-results.xml'
+    testRunTitle: 'Python $(python.version)'
+- task: UsePythonVersion@0
+  displayName: 'Use Python >= 3.6'
+  inputs:
+    versionSpec: '>= 3.6'
+- script: 'python setup.py sdist'
+  displayName: 'Build sdist'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: dist'
+  inputs:
+    PathtoPublish: dist
+    ArtifactName: dist
