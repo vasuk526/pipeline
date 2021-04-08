@@ -17,9 +17,6 @@ strategy:
     Python36:
       python.version: '3.6'
 
-    Python37:
-      python.version: '3.7'
-
 steps:
 - task: UsePythonVersion@0
   inputs:
@@ -41,12 +38,6 @@ steps:
   inputs:
     testResultsFiles: '**/test-results.xml'
     testRunTitle: 'Python $(python.version)'
-- task: UsePythonVersion@0
-  displayName: 'Use Python >= 3.6'
-  inputs:
-    versionSpec: '>= 3.6'
-- script: 'python setup.py sdist'
-  displayName: 'Build sdist'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: dist'
   inputs:
