@@ -36,9 +36,6 @@ steps:
     pytest
   displayName: 'pytest'
 
-- script: 'pip install pytest && pytest tests --doctest-modules --junitxml=junit/test-results.xml'
-  displayName: pytest
-  
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/test-results.xml'
   inputs:
