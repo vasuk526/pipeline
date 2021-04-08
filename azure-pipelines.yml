@@ -36,9 +36,6 @@ steps:
     pytest
   displayName: 'pytest'
 
-- script: 'pip install flake8 && flake8'
-  displayName: Flake8
-
 - script: 'pip install pytest && pytest tests --doctest-modules --junitxml=junit/test-results.xml'
   displayName: pytest
   
