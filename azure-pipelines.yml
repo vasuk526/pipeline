@@ -33,13 +33,4 @@ steps:
     pytest
   displayName: 'pytest'
 
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results **/test-results.xml'
-  inputs:
-    testResultsFiles: '**/test-results.xml'
-    testRunTitle: 'Python $(python.version)'
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: dist'
-  inputs:
-    PathtoPublish: dist
-    ArtifactName: dist
+
